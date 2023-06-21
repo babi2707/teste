@@ -1,5 +1,12 @@
 body {
     background-color: azure;
+    display: flex;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 20px;
 }
 
 h1 {
