@@ -1,0 +1,22 @@
+body {
+    background-color: azure;
+}
+
+h1 {
+    font-family: cursive;
+    font-size: 80px;
+    font-weight: bold;
+    text-align: center;
+    color:rgb(19, 19, 218);
+}
+
+#lista {
+    text-align: justify;
+    justify-content: center;
+    margin-top: 30px;
+    border-color:rgb(19, 19, 218);
+    border-style: solid;
+    border-radius: 10px;
+    border-width: thin;
+    padding: 20px;
+}
