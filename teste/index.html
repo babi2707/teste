@@ -38,25 +38,29 @@
       </div>
       <div class="newToDo">
         <div class="newToDo-input">
-          <form id="add-todo-form">
-            <input type="text" id="todo-name" placeholder="Name" required>
-            <input type="text" id="todo-description" placeholder="Description" required>
-            <input type="datetime-local" id="todo-startdatetime" required>
-            <input type="datetime-local" id="todo-enddatetime" required>
-            <button type="submit" class="add btn btn-outline-dark"><i class="fa-solid fa-plus"
-              style="color: #4624df;"></i></button>   
+          <form id="add-todo-form" onsubmit="return validateForm(event)">
+            <input type="text" id="todo-name" placeholder="Name" required />
+            <input
+              type="text"
+              id="todo-description"
+              placeholder="Description"
+              required
+            />
+            <input type="datetime-local" id="todo-startdatetime" required />
+            <input type="datetime-local" id="todo-enddatetime" required />
+            <button type="submit" class="add btn btn-outline-dark">
+              <i class="fa-solid fa-plus" style="color: #4624df"></i>
+            </button>
           </form>
         </div>
       </div>
+      <div class="list" id="lista">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur
+        quae, dolor dolorem, voluptate delectus assumenda nobis aperiam ratione
+        neque illo mollitia dolore ea consectetur deserunt molestiae recusandae
+        maxime eveniet est?
+      </div>
     </div>
 
-    <!----------  
-    <div class="container" id="lista">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur
-      quae, dolor dolorem, voluptate delectus assumenda nobis aperiam ratione
-      neque illo mollitia dolore ea consectetur deserunt molestiae recusandae
-      maxime eveniet est?
-    </div>
-    ---------->
   </body>
 </html>
