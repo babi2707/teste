@@ -22,12 +22,16 @@ h1 {
 #add-todo-form input {
     border-color:rgb(19, 19, 218);
     border-radius: 10px;
+    flex-grow: 1;
+    margin-right: 10px;
 }
 
 #add-todo-form input:hover {
     background-color: rgb(185, 229, 247);
     border-color:rgb(19, 19, 218);
     border-radius: 10px;
+    flex-grow: 1;
+    margin-right: 10px;
 }
 
 #add-todo-form button {
@@ -37,6 +41,8 @@ h1 {
     margin-left: 3px;
     margin-top: 0px;
     margin-bottom: 4px;
+    flex-shrink: 0;
+    width: auto;
 }
 
 #add-todo-form button:hover {
@@ -46,17 +52,63 @@ h1 {
     margin-left: 3px;
     margin-top: 0px;
     margin-bottom: 4px;
+    flex-shrink: 0;
+    width: auto;
 }
 
+.newToDo {
+    height: 40px;
+}
+
+.newToDo-input {
+    flex-grow: 1;
+    align-items: center;
+}
+
+.newToDo-input form {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+  
 
 #lista {
-    text-align: justify;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
     margin-top: 30px;
-    border-color:rgb(19, 19, 218);
+    border-color: rgb(19, 19, 218);
     border-style: solid;
     border-radius: 10px;
     border-width: thin;
     padding: 20px;
+  }
+  
+  .row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .col-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .texto {
+    margin-left: 10px;
+  }
+  
+
+.check {
+    width:px;
+}
+
+.check-mark {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgb(19, 19, 218);
 }
 
