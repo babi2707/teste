@@ -1,14 +1,18 @@
-function validateForm(event) {
-    const name = document.getElementById('todo-name');
-    const description = document.getElementById('todo-description');
-    const startDateTime = document.getElementById('todo-startdatetime');
-    const endDateTime = document.getElementById('todo-enddatetime');
-    
-    if (!name.value || !description.value || !startDateTime.value || !endDateTime.value) {
-      event.preventDefault(); // Impede a submissão do formulário
-      
-      // Personalize a mensagem de erro
-      alert("Por favor, preencha todos os campos obrigatórios.");
-      return false;
-    }
-  }
+function addItem(event) {
+  event.preventDefault();
+
+  let todo = {
+    name: document.getElementById("todo-name").value,
+    description: document.getElementById("todo-description").value,
+    startdatetime: document.getElementById("todo-startdatetime").value,
+    enddatetime: document.getElementById("todo-enddatetime").value,
+  };
+
+  console.log(todo);
+
+  // Limpar os valores dos campos de entrada
+  document.getElementById("todo-name").value = "";
+  document.getElementById("todo-description").value = "";
+  document.getElementById("todo-startdatetime").value = "";
+  document.getElementById("todo-enddatetime").value = "";
+}
