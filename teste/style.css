@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    margin-top: 30px;   
+    margin-top: 30px;
     width: 100%;
     max-width: 950px;
     align-items: center;
@@ -15,12 +15,12 @@ h1 {
     letter-spacing: 5px;
     font-size: 80px;
     font-weight: bold;
-    color:rgb(19, 19, 218);
+    color: rgb(19, 19, 218);
     text-align: center;
 }
 
 #add-todo-form input {
-    border-color:rgb(19, 19, 218);
+    border-color: rgb(19, 19, 218);
     border-radius: 10px;
     flex-grow: 1;
     margin-right: 10px;
@@ -28,7 +28,7 @@ h1 {
 
 #add-todo-form input:hover {
     background-color: rgb(185, 229, 247);
-    border-color:rgb(19, 19, 218);
+    border-color: rgb(19, 19, 218);
     border-radius: 10px;
     flex-grow: 1;
     margin-right: 10px;
@@ -36,7 +36,7 @@ h1 {
 
 #add-todo-form button {
     background-color: rgb(185, 229, 247);
-    border-color:rgb(19, 19, 218);
+    border-color: rgb(19, 19, 218);
     border-radius: 10px;
     margin-left: 3px;
     margin-top: 0px;
@@ -47,7 +47,7 @@ h1 {
 
 #add-todo-form button:hover {
     background-color: rgb(185, 217, 247);
-    border-color:rgb(19, 19, 218);
+    border-color: rgb(19, 19, 218);
     border-radius: 10px;
     margin-left: 3px;
     margin-top: 0px;
@@ -70,7 +70,7 @@ h1 {
     width: 100%;
     justify-content: space-between;
 }
-  
+
 
 #lista {
     display: flex;
@@ -82,33 +82,48 @@ h1 {
     border-style: solid;
     border-radius: 10px;
     border-width: thin;
-    padding: 20px;
-  }
-  
-  .row {
+    padding: 8px;
+}
+
+.row {
     display: flex;
     align-items: center;
-  }
-  
-  .col-1 {
+    width: 100%;
+}
+
+.col-1 {
+    width: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .texto {
+}
+
+.col-11 {
+    width: 90%;
+}
+
+.texto {
     margin-left: 10px;
-  }
-  
+}
+
+p {
+    margin: 0px;
+}
 
 .check {
-    width:px;
+    width: px;
 }
 
 .check-mark {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
-    border: 2px solid rgb(19, 19, 218);
+    border: 1px solid rgb(19, 19, 218);
+    cursor: pointer;
+    transform: all 0.25s;
 }
 
+.check-mark:hover {
+    border-color: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
+    background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);   
+}
