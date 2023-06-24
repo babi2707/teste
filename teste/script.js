@@ -1,4 +1,4 @@
-import { app, db } from "firebase.js";
+import { app, db } from "./firebase.js";
 
 function addItem(event) {
   event.preventDefault();
@@ -23,6 +23,6 @@ function addItem(event) {
   document.getElementById("todo-description").value = "";
   document.getElementById("todo-startdatetime").value = "";
   document.getElementById("todo-enddatetime").value = "";
-}
+};
 
 export { addItem };
