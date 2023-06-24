@@ -14,9 +14,36 @@ function getItems() {
 }
 
 function generateItems(items ) {
+
+  let itemsHTML = "";
+
   items.forEach((item) => {
     console.log(item);
+    itemsHTML += `
+        <div class="list" id="lista">
+          <div class="row">
+            <div class="col-1" id="item">
+              <div class="check">
+                <div class="check-mark">
+                  <i class="fa-solid fa-check" style="color: #4624df"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-11">
+              <div class="texto">
+                <span>Name: ${item.name}</span>
+                <span>Description: ${item.description}</span>
+                <span>StartDate: ${item.startDate}</span>
+                <span>EndDate: ${item.endDate}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    `
   });
+
+  document.querySelector(".items").innerHTML = itemsHTML; 
 }
 
 window.onload = () => {

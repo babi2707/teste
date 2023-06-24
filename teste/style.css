@@ -159,6 +159,18 @@ h1 {
     margin-left: 10px;
 }
 
+.texto span {
+    justify-content: space-between;
+}
+
+.texto span:first-of-type {
+    text-align: start;
+}
+
+.texto span:last-of-type {
+    text-align: end;
+}
+
 p {
     margin: 0px;
 }
