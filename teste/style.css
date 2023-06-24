@@ -189,9 +189,17 @@ p {
     transform: all 0.25s;
 }
 
+.check-mark i {
+    visibility: hidden;
+}
+
 .check-mark:hover, .check-mark.checked {
     border-color: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
     background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);   
+}
+
+.check-mark:hover i, .check-mark.checked i {
+    visibility: visible;
 }
 
 .texto.checked {
