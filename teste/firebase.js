@@ -17,4 +17,4 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
-export { app, db };
+export { db };

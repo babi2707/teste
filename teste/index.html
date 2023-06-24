@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDo Barbara</title>
 
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+    <script type="module" src="./firebase.js"></script>
+    <script type="module" src="./script.js"></script>
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -25,8 +31,6 @@
 
     <link rel="icon" type="icon" href="img/check-lg.svg" />
     <link rel="stylesheet" href="style.css" />
-    <!--<script type="module" src="./firebase.js"></script>-->
-    <script type="module" src="./script.js"></script>
   </head>
 
   <body>
@@ -38,7 +42,7 @@
       </div>
       <div class="newToDo">
         <div class="newToDo-input">
-          <form id="add-todo-form" onsubmit="addItem(event)">
+          <form id="add-todo-form" onsubmit="return addItem(event)">
             <input type="text" id="todo-name" placeholder="Name" required />
             <input
               type="text"
