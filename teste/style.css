@@ -225,3 +225,18 @@ p {
     cursor: pointer;
     text-align: end;
 }
+
+.edit-button {
+    border: none;
+    background: none;
+}
+
+.delete-button {
+    border: none;
+    background: none;
+}
+
+#botoes {
+    justify-content: end;
+    text-align: end;
+}

@@ -33,12 +33,19 @@ function generateItems(items) {
               </div>
             </div>
 
-            <div class="col-11">
+            <div class="col-9">
               <div class="texto ${item.status == "completed" ? "checked" : ""}">
                 <span><b>Name:</b> ${item.name}</span>
                 <span><b>Description:</b> ${item.description}</span>
                 <span><b>StartDate:</b>  ${date.toLocaleString("en")}</span>
                 <span><b>EndDate:</b> ${dateEnd.toLocaleString("en")}</span>
+              </div>
+            </div>
+
+            <div class="col-1" id="botoes">
+              <div class="buttons">
+                <button class="edit-button" data-id="${item.id}"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="delete-button" data-id="${item.id}"><i class="fa-solid fa-trash"></i></button>
               </div>
             </div>
           </div>
@@ -70,6 +77,62 @@ function createEventListener() {
     checkMark.addEventListener("click", function() {
       markCompleted(checkMark.dataset.id);
     })
+  });
+
+  let editButtons = document.querySelectorAll(".list .edit-button");
+
+  editButtons.forEach((button) => {
+    button.addEventListener("click", function() {
+      const itemId = button.dataset.id;
+      const listItem = button.closest(".list");
+      const itemRef = doc(collection(db, "todo-items"), itemId);
+
+      // Obter dados do documento
+      getDoc(itemRef)
+        .then((doc) => {
+          if (doc.exists) {
+            // Obter os campos do formulário
+            const nameInput = listItem.querySelector(".texto span:nth-child(1)");
+            const descriptionInput = listItem.querySelector(".texto span:nth-child(2)");
+            const startDatetimeInput = listItem.querySelector(".texto span:nth-child(3)");
+            const endDatetimeInput = listItem.querySelector(".texto span:nth-child(4)");
+
+            // Preencher os campos do formulário com os dados do documento
+            nameInput.textContent = `Name: ${doc.data().name}`;
+            descriptionInput.textContent = `Description: ${doc.data().description}`;
+            startDatetimeInput.textContent = `StartDate: ${new Date(doc.data().startDate).toLocaleString("en")}`;
+            endDatetimeInput.textContent = `EndDate: ${new Date(doc.data().endDate).toLocaleString("en")}`;
+
+            // Exibir o botão "Salvar" e ocultar o botão "Editar"
+            listItem.querySelector(".edit-button").style.display = "none";
+            listItem.querySelector(".delete-button").style.display = "none";
+            listItem.querySelector(".save-button").style.display = "inline-block";
+          }
+        })
+        .catch((error) => {
+          console.error("Error getting document: ", error);
+        });
+    });
+  });
+
+  let deleteButtons = document.querySelectorAll(".list .delete-button");
+
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", function() {
+      const itemId = button.dataset.id;
+      const listItem = button.closest(".list");
+      const itemRef = doc(collection(db, "todo-items"), itemId);
+
+      // Remover item do Firestore
+      deleteDoc(itemRef)
+        .then(() => {
+          // Remover item do DOM
+          listItem.remove();
+        })
+        .catch((error) => {
+          console.error("Error deleting item: ", error);
+        });
+    });
   });
 }
 
@@ -110,8 +173,6 @@ function clearCompletedItems() {
       });
   });
 }
-
-
 
 window.onload = () => {
   const addTodoForm = document.getElementById("add-todo-form");
