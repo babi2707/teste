@@ -1,4 +1,4 @@
-import { db, collection, addDoc, onSnapshot, doc, getDoc, updateDoc } from "./firebase.js";
+import { db, collection, addDoc, onSnapshot, doc, getDoc, updateDoc, deleteDoc } from "./firebase.js";
 
 function getItems() {
   onSnapshot(collection(db, "todo-items"), (snapshot) => {
@@ -16,7 +16,7 @@ function getItems() {
 function generateItems(items) {
 
   let itemsHTML = "";
-  
+  let count = 0;
 
   items.forEach((item) => {
     let date = new Date(item.startDate);
@@ -43,10 +43,23 @@ function generateItems(items) {
             </div>
           </div>
         </div> 
-    `
+    `;
+
+    if (item.status == "completed") {
+      count += 1;
+      console.log(count);
+    }
   });
 
+
+  let qtdItems = items.length;
+  let itemsLeft = qtdItems - count;
+  let itemsHTMLQtd = `
+    <div class="items-left">${itemsLeft} items left</div>
+  `;
+
   document.querySelector(".items").innerHTML = itemsHTML; 
+  document.querySelector(".items-left").innerHTML = itemsHTMLQtd;
   createEventListener();
 }
 
@@ -79,10 +92,32 @@ function markCompleted(id) {
   })
 }
 
+function clearCompletedItems() {
+  const checkedItems = document.querySelectorAll(".list .check-mark.checked");
+  checkedItems.forEach((item) => {
+    const listItem = item.closest(".list");
+    const itemId = item.dataset.id;
+    const itemRef = doc(collection(db, "todo-items"), itemId);
+
+    // Remover item do Firestore
+    deleteDoc(itemRef)
+      .then(() => {
+        // Remover item do DOM
+        listItem.remove();
+      })
+      .catch((error) => {
+        console.error("Error deleting item: ", error);
+      });
+  });
+}
+
 
 
 window.onload = () => {
   const addTodoForm = document.getElementById("add-todo-form");
+
+  const itemsClear = document.querySelector(".items-clear");
+  itemsClear.addEventListener("click", clearCompletedItems);
 
   addTodoForm.onsubmit = async (event) => {
     event.preventDefault();
